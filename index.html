@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+	body	{background-image: url(https://cdn141.picsart.com/345835506029201.jpg);
+		background-size: cover;}
+		#name{
+			border: dotted;
+			background-color: whitesmoke;
+			padding: 1%;
+		}
+		#password{
+			border: dashed;
+			padding: 1%;
+		}
+
+		
+	</style>
+	
+		
+
+</head>
+<body>
+	<div>
+
+	<p><input placeholder="enter your name" id="name"></p>
+	<p><input placeholder=" enter your password" id="password"></p>
+	<p><button onclick="store()">submit</button></p>
+</div>
+	<script type="text/javascript">
+		function store(){
+			var name=document.getElementById("name").value
+				console.log(name)
+			var password=document.getElementById("password").value
+				console.log(password)	
+			fetch("http://localhost:3000/newData",{
+				method:"POST",
+				headers:{
+					"Content-Type":"application/json"
+				},
+				body:JSON.stringify({name:name,password})
+				})
+			.then((res)=>{
+				console.log(res)
+				if(res.status===200)
+					alert("Registation successful")
+
+				})
+			.catch((err)=>{
+				alert(err)
+			})
+			}
+		
+</script>
+</body>
+</html>
