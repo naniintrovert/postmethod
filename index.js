@@ -17,8 +17,8 @@ app.get("/",(req,res)=>{
 	res.send("real and fake")
 })
 app.post("/newData",(req,res)=>{
-	const {name,password}=req.body
-	console.log(name,password)
-	res.send("Registation succussful")
+	const {name,password,bikes,gender}=req.body
+	console.log(req.body)
+	res.send("Respond send succussful")
 })
 app.listen(port,()=>console.log("server is runnig on port"))

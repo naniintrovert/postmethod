@@ -5,15 +5,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 	<style type="text/css">
-	body	{background-image: url(https://cdn141.picsart.com/345835506029201.jpg);
+	body	{background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjuJpBssTi5tGQ-GxmMuF7izS_Xmsrej5Mx0aiHLJjuoMDlk78xBwjVFfMLNJbKk64a6w&usqp=CAU);
 		background-size: cover;}
 		#name{
-			border: dotted;
+			border:dotted;
 			background-color: whitesmoke;
 			padding: 1%;
 		}
 		#password{
-			border: dashed;
+			border: dotted;
 			padding: 1%;
 		}
 
@@ -23,30 +23,55 @@
 		
 
 </head>
-<body>
-	<div>
+<body><center>
+	
 
 	<p><input placeholder="enter your name" id="name"></p>
-	<p><input placeholder=" enter your password" id="password"></p>
-	<p><button onclick="store()">submit</button></p>
-</div>
+	<P><input placeholder="enter your password" id="password"></P>
+	
+	
+	
+	  <p><select id="bikes" name="bikes"></p>
+		<option value="bmw"></option>
+		<option value="bullet">bullet</option>
+		<option value="ktm">ktm</option>
+		<option value="bmw">bmw</option>	
+		</select>
+		
+
+		<p>please select your gender</p>
+	<input type="radio" id="male"  name="gender" value="male"/>male
+    
+    <input type="radio" id="female"  name="gender" value="female"/>female
+    <p><button Id="btn" onclick="submit()">submit</button></p></center>
+
 	<script type="text/javascript">
-		function store(){
+		function submit(){
 			var name=document.getElementById("name").value
 				console.log(name)
 			var password=document.getElementById("password").value
 				console.log(password)	
+
+			var bikes=document.getElementById("bikes").value
+				console.log(bikes)
+			var gmale=document.getElementById("male").checked
+			var gfemale=document.getElementById("female").checked
+
+			if(gmale==true) var gender="male"
+			else var gender="female"
+				console.log(gender)
+
 			fetch("http://localhost:3000/newData",{
 				method:"POST",
 				headers:{
 					"Content-Type":"application/json"
 				},
-				body:JSON.stringify({name:name,password})
+				body:JSON.stringify({name:name,password,bikes:bikes,gender:gender})
 				})
 			.then((res)=>{
 				console.log(res)
 				if(res.status===200)
-					alert("Registation successful")
+					alert(" send successful")
 
 				})
 			.catch((err)=>{
